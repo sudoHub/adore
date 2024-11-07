@@ -1,0 +1,46 @@
+// The Dev Container format allows you to configure your environment. At the heart of it
+// is a Docker image or Dockerfile which controls the tools available in your environment.
+//
+// See https://aka.ms/devcontainer.json for more information.
+{
+	"name": "Gitpod",
+	// Use "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+	// instead of the build to use a pre-built image.
+	"build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+    },
+	// Features add additional features to your environment. See https://containers.dev/features
+	// Beware: features are not supported on all platforms and may have unintended side-effects.
+ "features": {
+     "ghcr.io/devcontainers/features/node:1": {
+         "nodeGypDependencies": true,
+         "installYarnUsingApt": true,
+         "version": "lts",
+         "pnpmVersion": "8.8.0",
+         "nvmVersion": "0.39"
+     },
+     "ghcr.io/rocker-org/devcontainer-features/miniforge:2.0.0": {
+         "version": "latest",
+         "variant": "Mambaforge"
+     },
+     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+         "upgradePackages": true,
+         "packages": "curl,nano"
+     },
+     "ghcr.io/paul-gilber/devcontainer-features/buildah-apt-get:1": {},
+     "ghcr.io/devcontainers/features/docker-in-docker:2": {
+         "moby": true,
+         "azureDnsAutoDetection": true,
+         "installDockerBuildx": true,
+         "installDockerComposeSwitch": true,
+         "version": "20.10",
+         "dockerDashComposeVersion": "v2"
+     },
+     "ghcr.io/rocker-org/devcontainer-features/miniforge:2": {
+         "version": "latest",
+         "variant": "Miniforge3"
+     },
+     "ghcr.io/shyim/devcontainers-features/bun:0": {}
+ }
+}
